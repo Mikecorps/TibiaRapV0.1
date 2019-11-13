@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                            if (response.isSuccessful() ) {
                                Log.d("Response code:", "===========" + response.body().getToken()  );
-                                SharePreferenceManager.setAppSettingsFile("PREF_TOKEN",response.body().getToken().toString());
+                                SharePreferenceManager.setAppSettingsFile("PREF_TOKEN",response.body().getToken());
 
                                Toast.makeText(MainActivity.this, "Sesion Iniciada", Toast.LENGTH_LONG).show();
                                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
