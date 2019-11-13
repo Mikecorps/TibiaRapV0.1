@@ -15,6 +15,7 @@ public interface TibiaService {
             "content-type:application/json",
             "X-Requested-With:XMLHttpRequest"
     })
+
     @POST("oauth/token")
     Call<ResponseLogin> doLogin(@Body RequestLogin requestLogin);
 
