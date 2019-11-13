@@ -6,22 +6,22 @@ import com.google.gson.annotations.SerializedName;
 public class ResponseLogin {
 
 
-    @SerializedName("success")
+    @SerializedName("message")
     @Expose
-    private String success;
+    private String message;
     public ResponseLogin() {
     }
 
-    public ResponseLogin(String success) {
+    public ResponseLogin(String message) {
         super();
-        this.success = success;
+        this.message = message;
     }
     public String getSuccess() {
-        return success;
+        return message;
     }
 
     public void setSuccess(String success) {
-        this.success = success;
+        this.message = success;
     }
 
 }

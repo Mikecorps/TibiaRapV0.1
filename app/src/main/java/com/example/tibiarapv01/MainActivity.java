@@ -70,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
                                finish();
                            }
                            else{
-                               UserAccount.setError("Verifique sus datos");
+                               UserAccount.setError("");
+                               response.message().toString();
+
 
                            }
                        }
