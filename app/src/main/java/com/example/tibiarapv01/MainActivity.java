@@ -64,13 +64,14 @@ public class MainActivity extends AppCompatActivity {
                        @Override
                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                            if (response.isSuccessful() ) {
-                               Toast.makeText(MainActivity.this, "Sesion Iniciada", Toast.LENGTH_LONG);
+                               Toast.makeText(MainActivity.this, "Sesion Iniciada", Toast.LENGTH_LONG).show();
                                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                                startActivity(intent);
                                finish();
                            }
                            else{
                                UserAccount.setError("Verifique sus datos");
+
                            }
                        }
 
