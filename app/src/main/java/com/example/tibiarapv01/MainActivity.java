@@ -2,6 +2,7 @@ package com.example.tibiarapv01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accessibilityservice.GestureDescription;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -67,10 +68,8 @@ public class MainActivity extends AppCompatActivity {
                        @Override
                        public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                            if (response.isSuccessful() ) {
-
-
-                               Log.d("Response code:", "===========" + response.headers().get("Set-Cookie"));
-                               Log.d("Response code:", "===========" + response.body() );
+                               Log.d("Response code:", "===========" + response.body().getToken()  );
+                                SharePreferenceManager.setAppSettingsFile("PREF_TOKEN",response.body().getToken().toString());
 
                                Toast.makeText(MainActivity.this, "Sesion Iniciada", Toast.LENGTH_LONG).show();
                                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
@@ -78,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                                finish();
                            }
                            else{
+
+                               UserAccount.setError("Usuario y/o contraseña incorrectos");
 
                            }
                        }

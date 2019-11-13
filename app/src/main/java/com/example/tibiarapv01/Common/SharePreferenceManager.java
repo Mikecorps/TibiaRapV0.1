@@ -9,16 +9,21 @@ public class SharePreferenceManager {
 
     private  SharePreferenceManager(){}
 
-    private static  SharedPreferences getSharePrefenrece()
+    private static  SharedPreferences getSharePreference()
     {
-        return  ThisApp.getContext().getSharedPreferences(APP_SETTINGS_FILE,Context.MODE_PRIVATE);
+
+        return  ContextApp.getContext().getSharedPreferences(APP_SETTINGS_FILE,Context.MODE_PRIVATE);
     }
 
     public static void setAppSettingsFile( String key, String value){
-        SharedPreferences.Editor editor = getSharePrefenrece().edit();
+        SharedPreferences.Editor editor = getSharePreference().edit();
         editor.putString( key, value);
         editor.commit();
     }
+    public static String getAppSettingsFile( String dataLabel){
+        return  getSharePreference().getString(dataLabel, null);
+    }
+
 
 
 }
