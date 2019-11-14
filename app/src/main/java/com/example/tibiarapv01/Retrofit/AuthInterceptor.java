@@ -12,7 +12,9 @@ public class AuthInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         String token  = SharePreferenceManager.getAppSettingsFile("PREF_TOKEN");
-        Request request =   chain .request().newBuilder().addHeader("Authorization","Bearer "+token).build();
+        Request request =   chain .request().newBuilder().addHeader("Authorization","Bearer "+token)
+                                                        .header("content-type", "application/json")
+                                                        .header("X-Requested-With","XMLHttpRequest").build();
         return chain.proceed(request);
     }
 }
