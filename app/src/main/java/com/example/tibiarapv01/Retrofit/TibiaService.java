@@ -35,8 +35,7 @@ public interface TibiaService {
     Call<ResponseLogin> CreateAccount(@Body  RequestCreateAccount requestAccount );
 
 
-    @GET("user")
-    Call<UserResponse> getUserData(@Header("Authorization") String token, @Header("content-type") String content ,@Header("X-Requested-With") String request  );
+
 
 
 

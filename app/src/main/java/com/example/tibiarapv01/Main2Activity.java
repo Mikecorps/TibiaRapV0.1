@@ -31,25 +31,11 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         getSupportActionBar().hide();
 
-        String token  = SharePreferenceManager.getAppSettingsFile("PREF_TOKEN");
+
 //        Toast.makeText(this , "aout="+token,Toast.LENGTH_LONG ).show();
 
 
-        Call<UserResponse> call = tibiaService.getUserData("Bearer "+token, "application/json","XMLHttpRequest");
-        call.enqueue(new Callback<UserResponse>() {
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
 
-                if (response.isSuccessful()){
-                    Log.d("Response code:", "===========" + response.body().getData().getUsername() );
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
-
-            }
-        });
 
 
 
