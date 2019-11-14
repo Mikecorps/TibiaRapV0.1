@@ -1,4 +1,4 @@
-package com.example.tibiarapv01;
+package com.example.tibiarapv01.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tibiarapv01.R;
 import com.example.tibiarapv01.Request.RequestCreateAccount;
 import com.example.tibiarapv01.Response.ResponseLogin;
 import com.example.tibiarapv01.Retrofit.TibiaClient;

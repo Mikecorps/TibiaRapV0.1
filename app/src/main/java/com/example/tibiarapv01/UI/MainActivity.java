@@ -1,10 +1,8 @@
-package com.example.tibiarapv01;
+package com.example.tibiarapv01.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accessibilityservice.GestureDescription;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tibiarapv01.Common.SharePreferenceManager;
+import com.example.tibiarapv01.R;
 import com.example.tibiarapv01.Request.RequestLogin;
 import com.example.tibiarapv01.Response.ResponseLogin;
 import com.example.tibiarapv01.Retrofit.TibiaClient;
