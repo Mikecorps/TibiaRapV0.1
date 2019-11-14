@@ -2,29 +2,27 @@ package com.example.tibiarapv01.UI;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tibiarapv01.UI.AchievementListFragment.OnListFragmentInteractionListener;
-import com.example.tibiarapv01.UI.dummy.DummyContent.DummyItem;
+import com.example.tibiarapv01.R;
+import com.example.tibiarapv01.Response.Achievement;
+import com.example.tibiarapv01.Response.Achievements;
 
-import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
+
 public class MyAchievementRecyclerViewAdapter extends RecyclerView.Adapter<MyAchievementRecyclerViewAdapter.ViewHolder> {
+    private Context ctx;
+    private final Achievements mValues;
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
 
-    public MyAchievementRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
-        mListener = listener;
+    public MyAchievementRecyclerViewAdapter(Context context, Achievements achievements) {
+        mValues = achievements;
+        ctx = context;
     }
 
     @Override
@@ -36,43 +34,34 @@ public class MyAchievementRecyclerViewAdapter extends RecyclerView.Adapter<MyAch
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mItem = mValues.getData().get(position);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+        holder.achiv_tittle.setText(holder.mItem.getName());
+        holder.achiv_spoiler.setText(holder.mItem.getSpoiler());
+
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return mValues.getData().size() ;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView achiv_tittle;
+        public final TextView achiv_spoiler;
+        public Achievement mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            achiv_tittle = (TextView) view.findViewById(R.id.Achiv_tittle);
+            achiv_spoiler = (TextView) view.findViewById(R.id.Achiv_spoiler);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + achiv_tittle.getText() + "'";
         }
     }
 }

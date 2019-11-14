@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tibiarapv01.R;
-import com.example.tibiarapv01.UI.dummy.DummyContent;
-import com.example.tibiarapv01.UI.dummy.DummyContent.DummyItem;
+
+import com.example.tibiarapv01.Response.Achievement;
+import com.example.tibiarapv01.Response.Achievements;
+
 
 import java.util.List;
 
@@ -31,6 +33,10 @@ public class AchievementListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    RecyclerView recyclerView;
+    MyAchievementRecyclerViewAdapter adapter;
+    List<Achievements> achievements_list;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -72,9 +78,20 @@ public class AchievementListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAchievementRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            LoadAchievements();
+
         }
         return view;
+    }
+
+    private void LoadAchievements() {
+//        adapter = new MyAchievementRecyclerViewAdapter(
+//                getActivity(),
+//                achievements_list,
+//
+//                );
+
+
     }
 
 
@@ -107,6 +124,6 @@ public class AchievementListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Achievement item);
     }
 }
