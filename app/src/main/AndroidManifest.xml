@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.CreateAcountActivity"></activity>
+
+        <activity android:name=".UI.CreateAcountActivity" />
         <activity android:name=".UI.Main2Activity" />
         <activity android:name=".UI.MainActivity">
             <intent-filter>
