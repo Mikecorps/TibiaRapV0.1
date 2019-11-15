@@ -17,12 +17,13 @@ import com.example.tibiarapv01.Request.RequestLogin;
 import com.example.tibiarapv01.Response.ResponseLogin;
 import com.example.tibiarapv01.Retrofit.TibiaClient;
 import com.example.tibiarapv01.Retrofit.TibiaService;
+import com.example.tibiarapv01.UI.dummy.DummyContent;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
 
     Button binLogan;
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         tibiaClient = TibiaClient.getInstance();
         tibiaService = tibiaClient.getService();
     }
-
 
 
 

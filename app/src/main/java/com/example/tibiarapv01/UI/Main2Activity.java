@@ -10,16 +10,17 @@ import com.example.tibiarapv01.R;
 import com.example.tibiarapv01.Response.UserResponse;
 import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
 import com.example.tibiarapv01.Retrofit.TibiaAuthService;
+import com.example.tibiarapv01.UI.dummy.DummyContent;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements AchievementFragment.OnListFragmentInteractionListener{
 
     TibiaAuthService tibiaService;
     TibiaAuthClient tibiaClient;
-    TextView username, email,id_user;
+
 
 
     @Override
@@ -28,9 +29,7 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 //        getSupportActionBar().hide();
 
-        username = findViewById(R.id.textViewUsername);
-        email = findViewById(R.id.textViewEmal);
-        id_user = findViewById(R.id.textViewID);
+
 
         RefitInit();
         Call<UserResponse> call = tibiaService.getUserData();
@@ -40,9 +39,6 @@ public class Main2Activity extends AppCompatActivity {
                 if (response.isSuccessful())
                 {
                     getSupportActionBar().setTitle(response.body().getData().getUsername());
-                    username.setText( "username: "+response.body().getData().getUsername());
-                    email.setText("Email. "+response.body().getData().getEmail());
-                    id_user.setText("ID: "+response.body().getData().getId().toString());
 
 
                 }else{
@@ -66,4 +62,8 @@ public class Main2Activity extends AppCompatActivity {
         tibiaService = tibiaClient.getAuthService();
     }
 
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
 }
