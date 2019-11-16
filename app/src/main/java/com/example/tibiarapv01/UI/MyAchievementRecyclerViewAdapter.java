@@ -5,25 +5,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.example.tibiarapv01.R;
+import com.example.tibiarapv01.Response.Achievement;
+import com.example.tibiarapv01.Response.Achievements;
 import com.example.tibiarapv01.UI.AchievementFragment.OnListFragmentInteractionListener;
-import com.example.tibiarapv01.UI.dummy.DummyContent.DummyItem;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyAchievementRecyclerViewAdapter extends RecyclerView.Adapter<MyAchievementRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Achievement> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyAchievementRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyAchievementRecyclerViewAdapter(List<Achievement> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -37,9 +35,9 @@ public class MyAchievementRecyclerViewAdapter extends RecyclerView.Adapter<MyAch
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mItem = mValues.get(position)  ;
+        holder.mIdView.setText(holder.mItem.getName());
+        holder.mContentView.setText(holder.mItem.getSpoiler());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +60,13 @@ public class MyAchievementRecyclerViewAdapter extends RecyclerView.Adapter<MyAch
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Achievement mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView =  view.findViewById(R.id.textView_name);
+            mContentView =  view.findViewById(R.id.textViewSpoiler);
         }
 
         @Override

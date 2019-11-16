@@ -13,10 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tibiarapv01.R;
-import com.example.tibiarapv01.UI.dummy.DummyContent;
-import com.example.tibiarapv01.UI.dummy.DummyContent.DummyItem;
+import com.example.tibiarapv01.Response.Achievement;
+import com.example.tibiarapv01.Response.Achievements;
+import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
+import com.example.tibiarapv01.Retrofit.TibiaAuthService;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A fragment representing a list of Items.
@@ -31,6 +37,12 @@ public class AchievementFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    MyAchievementRecyclerViewAdapter adapter;
+    Achievements achievements;
+    RecyclerView recyclerView;
+    TibiaAuthService tibiaService;
+    TibiaAuthClient tibiaClient;
+
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -63,16 +75,36 @@ public class AchievementFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_achievement_list, container, false);
 
+        Call <Achievements> call = tibiaService.getAllAchievements();
+        call.enqueue(new Callback<Achievements>() {
+            @Override
+            public void onResponse(Call<Achievements> call, Response<Achievements> response) {
+                if (response.isSuccessful()){
+                    achievements = new Achievements( response.body().getData());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Achievements> call, Throwable t) {
+
+            }
+        });
+
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+             recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAchievementRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            RefitInit();
+
+
+
+            adapter = new MyAchievementRecyclerViewAdapter(achievements.getData(), mListener);
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -107,6 +139,11 @@ public class AchievementFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Achievement item);
+    }
+
+    private void RefitInit() {
+        tibiaClient = TibiaAuthClient.getInstance();
+        tibiaService = tibiaClient.getAuthService();
     }
 }

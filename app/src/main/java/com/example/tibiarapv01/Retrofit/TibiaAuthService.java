@@ -1,5 +1,6 @@
 package com.example.tibiarapv01.Retrofit;
 
+import com.example.tibiarapv01.Response.Achievement;
 import com.example.tibiarapv01.Response.Achievements;
 import com.example.tibiarapv01.Response.UserResponse;
 
@@ -15,6 +16,6 @@ public interface TibiaAuthService {
     Call<UserResponse> getUserData();
 
     @GET("achievements")
-    Call<List<Achievements>> getAllAchievements();
+    Call<Achievements> getAllAchievements();
 
 }

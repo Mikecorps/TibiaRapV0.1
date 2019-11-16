@@ -3,24 +3,24 @@ package com.example.tibiarapv01.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tibiarapv01.R;
+import com.example.tibiarapv01.Response.Achievement;
+import com.example.tibiarapv01.Response.Achievements;
 import com.example.tibiarapv01.Response.UserResponse;
 import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
 import com.example.tibiarapv01.Retrofit.TibiaAuthService;
-import com.example.tibiarapv01.UI.dummy.DummyContent;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Main2Activity extends AppCompatActivity implements AchievementFragment.OnListFragmentInteractionListener{
+public class Main2Activity extends AppCompatActivity {
 
     TibiaAuthService tibiaService;
     TibiaAuthClient tibiaClient;
-
+    Achievements achievements;
 
 
     @Override
@@ -62,8 +62,6 @@ public class Main2Activity extends AppCompatActivity implements AchievementFragm
         tibiaService = tibiaClient.getAuthService();
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
 
-    }
+
 }

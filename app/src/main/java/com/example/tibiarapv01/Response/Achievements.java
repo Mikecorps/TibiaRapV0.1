@@ -35,4 +35,8 @@ public class Achievements {
         this.data = data;
     }
 
+    public int size() {
+        return data.size();
+
+    }
 }
