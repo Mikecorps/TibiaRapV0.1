@@ -11,16 +11,18 @@ import com.example.tibiarapv01.Response.Achievements;
 import com.example.tibiarapv01.Response.UserResponse;
 import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
 import com.example.tibiarapv01.Retrofit.TibiaAuthService;
+import com.example.tibiarapv01.UI.dummy.DummyContent;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements AchieveFragment.OnListFragmentInteractionListener{
 
     TibiaAuthService tibiaService;
     TibiaAuthClient tibiaClient;
-    Achievements achievements;
+
+
 
 
     @Override
@@ -63,5 +65,8 @@ public class Main2Activity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onListFragmentInteraction(Achievement item) {
 
+    }
 }
