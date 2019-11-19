@@ -21,14 +21,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity implements NewsFragment.OnListFragmentInteractionListener {
 
     TibiaAuthService tibiaService;
     TibiaAuthClient tibiaClient;
-    TibiaService tService;
-    TibiaClient tClient;
-    Achievements achievements;
-    List<News> news;
+
 
 
 
@@ -71,10 +68,12 @@ public class Main2Activity extends AppCompatActivity {
         tibiaClient = TibiaAuthClient.getInstance();
         tibiaService = tibiaClient.getAuthService();
 
-        tClient = TibiaClient.getInstance();
-        tService = tClient.getService();
+
     }
 
 
+    @Override
+    public void onListFragmentInteraction(News item) {
 
+    }
 }
