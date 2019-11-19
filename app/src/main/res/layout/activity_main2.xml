@@ -6,14 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".UI.Main2Activity">
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.tibiarapv01.UI.AchieveFragment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_achievment_list" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

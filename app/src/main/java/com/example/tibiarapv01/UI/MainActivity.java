@@ -14,9 +14,13 @@ import android.widget.Toast;
 import com.example.tibiarapv01.Common.SharePreferenceManager;
 import com.example.tibiarapv01.R;
 import com.example.tibiarapv01.Request.RequestLogin;
+import com.example.tibiarapv01.Response.Achievements;
+import com.example.tibiarapv01.Response.News;
 import com.example.tibiarapv01.Response.ResponseLogin;
 import com.example.tibiarapv01.Retrofit.TibiaClient;
 import com.example.tibiarapv01.Retrofit.TibiaService;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity  {
     TextView Create_account;
     TibiaService tibiaService;
     TibiaClient tibiaClient;
+    Achievements achievements;
+    List<News> news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +51,29 @@ public class MainActivity extends AppCompatActivity  {
 
         RefitInit();
 
+
+
+
+
         binLogan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                final String user,pass;
+                Call<List<News>> CN = tibiaService.getNews();
+                CN.enqueue(new Callback<List<News>>() {
+                    @Override
+                    public void onResponse(Call<List<News>> call, Response<List<News>> response) {
+                        if (response.isSuccessful())
+                        {
+                            news = response.body();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<News>> call, Throwable t) {
+
+                    }
+                });
 
                user = UserAccount.getText().toString();
                pass = Password.getText().toString();
