@@ -1,4 +1,4 @@
-package com.example.tibiarapv01.UI.ui.notifications;
+package com.example.tibiarapv01.UI.MenuFragments.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

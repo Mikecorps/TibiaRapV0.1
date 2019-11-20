@@ -1,4 +1,4 @@
-package com.example.tibiarapv01.UI.ui.home;
+package com.example.tibiarapv01.UI.MenuFragments.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,5 +31,10 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }

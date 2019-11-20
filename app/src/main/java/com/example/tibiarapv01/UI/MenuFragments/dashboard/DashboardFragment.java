@@ -1,4 +1,4 @@
-package com.example.tibiarapv01.UI.ui.dashboard;
+package com.example.tibiarapv01.UI.MenuFragments.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
