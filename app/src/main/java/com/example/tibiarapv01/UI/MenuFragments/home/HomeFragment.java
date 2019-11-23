@@ -17,8 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tibiarapv01.R;
 import com.example.tibiarapv01.Response.News;
-import com.example.tibiarapv01.Retrofit.TibiaClient;
-import com.example.tibiarapv01.Retrofit.TibiaService;
 import com.example.tibiarapv01.UI.MenuFragments.notifications.NotificationsViewModel;
 import com.example.tibiarapv01.UI.MyNewsRecyclerViewAdapter;
 import com.example.tibiarapv01.UI.NewsFragment;
@@ -36,9 +34,8 @@ public class HomeFragment extends Fragment {
     private int mColumnCount = 1;
     private static final String ARG_COLUMN_COUNT = "column-count";
     RecyclerView recyclerView;
-    List<News> news = new ArrayList<>();
-    TibiaService tibiaService;
-    TibiaClient tibiaClient;
+    List<News> newsSAL = new ArrayList<>();
+
     public HomeFragment() {
 
     }
@@ -74,37 +71,17 @@ public class HomeFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            retEnit();
-            Call<List<News>> call = tibiaService.getNews();
-            call.enqueue(new Callback<List<News>>() {
-                @Override
-                public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-                    if (response.isSuccessful())
-                    {
-                        news = response.body();
-                        recyclerView.setAdapter(new TBNewsRecyclerViewAdapter(news, context));
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<List<News>> call, Throwable t) {
-
-                }
-            });
+             homeViewModel.getNews().observe(this, new Observer<List<News>>() {
+                 @Override
+                 public void onChanged(List<News> news) {
+                     newsSAL = news;
+                     recyclerView.setAdapter(new TBNewsRecyclerViewAdapter(newsSAL, context));
+                 }
+             });
 
 
         }
         return root;
     }
-
-
-
-    public void retEnit()
-    {
-        tibiaClient = TibiaClient.getInstance();
-        tibiaService = tibiaClient.getService();
-    }
-
 
 }
