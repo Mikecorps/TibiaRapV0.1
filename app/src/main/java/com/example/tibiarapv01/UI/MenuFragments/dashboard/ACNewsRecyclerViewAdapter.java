@@ -14,17 +14,27 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tibiarapv01.R;
+import com.example.tibiarapv01.Request.RequestAcMarc;
 import com.example.tibiarapv01.Response.Achievement;
 import com.example.tibiarapv01.Response.News;
+import com.example.tibiarapv01.Response.UserResponse;
+import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
+import com.example.tibiarapv01.Retrofit.TibiaAuthService;
 import com.example.tibiarapv01.UI.MenuActivity;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ACNewsRecyclerViewAdapter extends RecyclerView.Adapter<ACNewsRecyclerViewAdapter.ViewHolder> {
 
     private  List<Achievement> mValues;
     Context CTX;
+    TibiaAuthService tibiaService;
+    TibiaAuthClient tibiaClient;
     public ACNewsRecyclerViewAdapter(List<Achievement> items, Context context) {
         mValues = items;
         CTX = context;
@@ -51,6 +61,37 @@ public class ACNewsRecyclerViewAdapter extends RecyclerView.Adapter<ACNewsRecycl
         else {
             holder.AC_marc.setImageResource(R.drawable.ic_star_border_black_24dp);
         }
+        holder.AC_marc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.mItem.getChecked()){
+                    holder.mItem.setChecked(false);
+                    holder.AC_marc.setImageResource(R.drawable.ic_star_border_black_24dp);
+                }
+                else {
+                    holder.mItem.setChecked(true);
+                    holder.AC_marc.setImageResource(R.drawable.ic_star_black_24dp);
+                }
+                tibiaClient = TibiaAuthClient.getInstance();
+                tibiaService = tibiaClient.getAuthService();
+                RequestAcMarc acMarc = new RequestAcMarc(holder.mItem.getId());
+                Call<UserResponse> call = tibiaService.marcAchieve(acMarc);
+                call.enqueue(new Callback<UserResponse>() {
+                    @Override
+                    public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                            if (response.isSuccessful())
+                            {}
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserResponse> call, Throwable t) {
+
+                    }
+                });
+
+
+            }
+        });
 
 
     }
@@ -78,12 +119,7 @@ public class ACNewsRecyclerViewAdapter extends RecyclerView.Adapter<ACNewsRecycl
             AC_spoiler = view.findViewById(R.id.ach_spoiler);
             AC_marc = view.findViewById(R.id.ac_star);
 
-            AC_marc.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("Response code:", "===========" + "image view"  );
-                }
-            });
+
         }
 
         @Override
