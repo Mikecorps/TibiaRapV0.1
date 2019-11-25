@@ -10,6 +10,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface TibiaAuthService {
 
@@ -17,7 +18,7 @@ public interface TibiaAuthService {
     @GET("user")
     Call<UserResponse> getUserData();
 
-    @GET("achievements")
+    @POST("achievements")
     Call<Achievements> getAllAchievements();
 
     @GET("news")

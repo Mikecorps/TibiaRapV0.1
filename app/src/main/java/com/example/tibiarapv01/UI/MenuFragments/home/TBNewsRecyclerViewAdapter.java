@@ -14,7 +14,11 @@ import com.example.tibiarapv01.Response.News;
 import com.example.tibiarapv01.Retrofit.TibiaAuthClient;
 import com.example.tibiarapv01.UI.NewsFragment.OnListFragmentInteractionListener;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 
 public class TBNewsRecyclerViewAdapter extends RecyclerView.Adapter<TBNewsRecyclerViewAdapter.ViewHolder> {
@@ -37,9 +41,7 @@ public class TBNewsRecyclerViewAdapter extends RecyclerView.Adapter<TBNewsRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.newsTittle.setText(holder.mItem.getTitle());
-        holder.newsDate.setText(holder.mItem.getCreatedAt().toString());
         holder.newsContent.setText(Html.fromHtml(holder.mItem.getContent(),Html.FROM_HTML_MODE_COMPACT));
-
 
     }
 

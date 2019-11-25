@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:layout_marginBottom="1dp">
+
+    <TextView
+        android:id="@+id/ach_tittle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintStart_toEndOf="@+id/ac_star"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ach_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#F8140202"
+        android:text="TextView"
+        android:textColor="#F8F7F7"
+        app:layout_constraintStart_toStartOf="@+id/ach_tittle"
+        app:layout_constraintTop_toBottomOf="@+id/ach_tittle" />
+
+    <TextView
+        android:id="@+id/ach_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:background="#04524A"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/ach_points"
+        app:layout_constraintTop_toBottomOf="@+id/ach_tittle" />
+
+    <TextView
+        android:id="@+id/ach_spoiler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ach_points"
+        app:layout_constraintTop_toBottomOf="@+id/ach_points" />
+
+    <ImageView
+        android:id="@+id/ac_star"
+        android:layout_width="42dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_star_border_black_24dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
